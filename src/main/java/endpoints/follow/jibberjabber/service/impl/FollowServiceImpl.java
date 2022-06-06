@@ -25,7 +25,7 @@ public class FollowServiceImpl implements FollowService {
     public FollowDTO createFollow(FollowCreateDTO followCreateDTO) {
         Follow follow = Follow.builder()
                 .followerID(followCreateDTO.getFollower())
-                .followerID(followCreateDTO.getFollowed())
+                .followedID(followCreateDTO.getFollowed())
                 .build();
 
         return followRepository.save(follow).toDTO();
