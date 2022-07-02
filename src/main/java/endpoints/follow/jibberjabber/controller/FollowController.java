@@ -5,6 +5,7 @@ import endpoints.follow.jibberjabber.service.FollowService;
 import lombok.val;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.metrics.annotation.Timed;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/follow")
+@Timed("follows_controller_time")
 public class FollowController {
 
     private final FollowService followService;
