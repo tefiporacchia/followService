@@ -23,24 +23,28 @@ public class FollowController {
     }
 
     @PostMapping
+    @Timed
     public ResponseEntity<?> follow(@Valid @RequestBody FollowCreateDTO followCreateDTO) {
         val createdFollow = followService.createFollow(followCreateDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFollow);
     }
 
     @GetMapping("/all/{user}")
+    @Timed
     public ResponseEntity<?> getAllUsersFollowers (@PathVariable String user) {
         val followers = followService.getAllUsersFollowers(user);
         return ResponseEntity.status(HttpStatus.OK).body(followers);
     }
 
     @DeleteMapping("/unfollow/{follower}/{following}")
+    @Timed
     public ResponseEntity<?> unfollow(@PathVariable String follower,@PathVariable String following ) {
         followService.unfollow(follower,following);
         return ResponseEntity.noContent().build(); //sacar el follower de aca
     }
 
     @GetMapping("/{id}")
+    @Timed
     public ResponseEntity<?> getFollowById(@PathVariable UUID id) {
         val follow = followService.getFollowById(id);
         return ResponseEntity.status(HttpStatus.OK).body(follow);

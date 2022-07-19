@@ -32,7 +32,7 @@ public class FollowServiceImpl implements FollowService {
                 .followedID(followCreateDTO.getFollowed())
                 .build();
 
-        logger.info("cerated follow: " + follow);
+        logger.info("created follow: " + follow);
 
         return followRepository.save(follow).toDTO();
     }
